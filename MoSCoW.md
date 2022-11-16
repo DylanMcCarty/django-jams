@@ -31,6 +31,6 @@
 
 - as a user i would also like to be able to delete a playlist as well as remove songs from the playlist
 
-- as a user i would like to be able to like a song and have a liked songs playlist
+- as a user i would like to be able to like a song and have a liked songs playlist for me to look at later
 
 ------
