@@ -3,7 +3,7 @@ from django.http.response import Http404
 from rest_framework.views import APIView
 from .models import Users, Playlists
 from rest_framework.response import Response
-from .serializers import UsersSerilizer
+from .serializers import UsersSerializer, PlaylistsSerializer
 
 
 class UsersAPIView(APIView):
@@ -16,11 +16,11 @@ class UsersAPIView(APIView):
     def get(self, request, pk=None, format=None):
         if pk:
             data = self.get_object(pk)
-            serializer = UsersSerilizer(data)
+            serializer = UsersSerializer(data)
 
         else:
             data = Users.objects.all()
-            serializer = UsersSerilizer(data, many=True)
+            serializer = UsersSerializer(data, many=True)
 
         return Response(serializer.data)  
     
@@ -29,9 +29,9 @@ class PlaylistsAPIView(APIView):
     def get(self, request, pk=None, format=None):
         if pk:
             data = self.get_object(pk)
-            serializer = UsersSerilizer(data)
+            serializer = PlaylistsSerializer(data)
 
         else:
-            data = Users.objects.all()
-            serializer = UsersSerilizer(data, many=True)
-
+            data = Playlists.objects.all()
+            serializer = PlaylistsSerializer(data, many=True)
+        return Response(serializer.data)
