@@ -3,5 +3,6 @@ from .views import UsersAPIView
 
 urlpatterns = [
     path('users/', UsersAPIView.as_view()),
-    path('users/<str:pk>/', UsersAPIView.as_view())
+    path('users/<str:pk>/', UsersAPIView.as_view()),
+    path('playlists', UsersAPIView.as_view())
 ]
