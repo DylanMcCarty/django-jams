@@ -11,6 +11,7 @@ class PlaylistsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Playlists
         fields = "__all__"
+        depth=1
 
 
 class ArtistSerializer(serializers.ModelSerializer):
