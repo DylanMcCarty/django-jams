@@ -18,11 +18,11 @@ class Playlists(models.Model):
     def __str__(self):
         return "name: " + self.name + " || User: " + self.user_id.name 
 
-class Songs(models.Model):
-    album_id = models.ForeignKey(to, on_delete)
-    artist_id = models.ForeignKey(to, on_delete)
-    name = models.CharField()
-    length = models.DecimalField()
-    def __str__(self):
-        return "Album: " + self.album_id.name + " || Artist: " + self.artist_id.name + " || Song Name: " + self.name + " || Length: " + self.length
+# class Songs(models.Model):
+#     album_id = models.ForeignKey(to, on_delete)
+#     artist_id = models.ForeignKey(to, on_delete)
+#     name = models.CharField()
+#     length = models.DecimalField()
+#     def __str__(self):
+#         return "Album: " + self.album_id.name + " || Artist: " + self.artist_id.name + " || Song Name: " + self.name + " || Length: " + self.length
 
