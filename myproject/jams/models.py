@@ -3,7 +3,7 @@ from django.db import models
 
 # Create your models here.
 class Playlists(models.Model):
-    created_by = models.ForeignKey('Users', on_delete=models.PROTECT)
+    created_by = models.ForeignKey('Users', on_delete=models.PROTECT, null=True)
     name = models.CharField(max_length=40)
     created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
@@ -17,19 +17,25 @@ class Users(models.Model):
     def __str__(self):
         return "name: " + self.name + " || email: " + self.email + " || password: " + self.password 
 
-
-# class Songs(models.Model):
-#     album_id = models.ForeignKey(to, on_delete)
-#     artist_id = models.ForeignKey(to, on_delete)
-#     name = models.CharField()
-#     length = models.DecimalField()
-#     def __str__(self):
-#         return "Album: " + self.album_id.name + " || Artist: " + self.artist_id.name + " || Song Name: " + self.name + " || Length: " + self.length
-
 class Artist(models.Model):
     name = models.CharField(max_length=30)
     def __str__(self):
         return  "Artist Name: " + self.name
 
+class Album(models.Model):
+    artist_id = models.ForeignKey('Artist', on_delete=models.PROTECT, null=True)
+    name = models.CharField(max_length=60)
+    
+    def __str__(self):
+        return "Album Name: " + self.name + " || Artist Name: " + self.artist_id.name
 
+
+class Song(models.Model):
+    album_id = models.ForeignKey('Album', on_delete=models.PROTECT, null=True)
+    artist_id = models.ForeignKey('Artist', on_delete=models.PROTECT, null=True)
+    name = models.CharField(max_length=60)
+    length = models.FloatField(null=True)
+
+    def __str__(self):
+        return 'Song Name: ' + self.name + ' || Artist Name: ' + self.artist_id.name + ' || Album Name: ' + self.album_id.name + ' || (Length: ' + str(self.length) + ' )'
 
